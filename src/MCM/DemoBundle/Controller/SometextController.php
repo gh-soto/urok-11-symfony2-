@@ -15,3 +15,4 @@ class SometextController extends Controller
         return $this->render('MCMDemoBundle:Text:text.html.twig', array('text' => $some_text));
     }
 }
+

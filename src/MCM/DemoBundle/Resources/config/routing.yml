@@ -1,3 +1,9 @@
+mcm_demo_ex2:
+    resource: "@MCMDemoBundle/Controller/"
+    type:     annotation
+    prefix:   /article
+
+
 mcm_demo_homepage:
     path:     /hello/{name}
     defaults: { _controller: MCMDemoBundle:Default:index }
@@ -5,3 +11,6 @@ mcm_demo_homepage:
 mcm_demo_ex3:
     path:     /text
     defaults: { _controller: MCMDemoBundle:Sometext:index }
+
+
+
