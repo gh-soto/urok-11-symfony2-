@@ -10,4 +10,9 @@ class DefaultController extends Controller
     {
         return $this->render('MCMDemoBundle:Default:index.html.twig', array('name' => $name));
     }
+
+    public function homepageAction()
+    {
+        return $this->render('MCMDemoBundle:Default:homepage.html.twig');
+    }
 }

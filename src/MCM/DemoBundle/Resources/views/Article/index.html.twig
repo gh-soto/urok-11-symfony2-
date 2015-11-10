@@ -1,9 +1,10 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
+<div class="page">
     <h1>Article list</h1>
 
-    <table class="records_list">
+    <table class="records_list table table-bordered">
         <thead>
             <tr>
                 <th>Id</th>
@@ -39,11 +40,12 @@
         </tbody>
     </table>
 
-        <ul>
+        <ul class="list-unstyled">
         <li>
-            <a href="{{ path('_new') }}">
+            <a  class="btn btn-info" href="{{ path('_new') }}">
                 Create a new entry
             </a>
         </li>
     </ul>
+    </div>
     {% endblock %}

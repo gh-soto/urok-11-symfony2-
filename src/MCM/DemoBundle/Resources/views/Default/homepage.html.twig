@@ -1,0 +1,20 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+
+	<ul class="record_actions">
+        <li>
+            <a href="{{ path('art_list') }}">Завдання 2</a>
+        </li>
+        <li>
+            <a href="/text">Завдання 3</a>
+        </li>
+        <li>
+            <a href="{{ path('fsname_new') }}">Завдання 4 (через таблицю)</a>
+        </li>
+        <li>
+            <a href="/name">Завдання 4 (через POST: не доробив - важко розібратись)</a>
+        </li>
+    </ul>
+
+{% endblock %}

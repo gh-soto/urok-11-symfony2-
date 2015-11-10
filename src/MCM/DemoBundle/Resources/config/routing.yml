@@ -1,16 +1,24 @@
 mcm_demo_ex2:
     resource: "@MCMDemoBundle/Controller/"
     type:     annotation
-    prefix:   /article
+    prefix:   /
 
 
 mcm_demo_homepage:
+    path:     /
+    defaults: { _controller: MCMDemoBundle:Default:homepage }
+
+mcm_demo_hello:
     path:     /hello/{name}
     defaults: { _controller: MCMDemoBundle:Default:index }
 
 mcm_demo_ex3:
     path:     /text
     defaults: { _controller: MCMDemoBundle:Sometext:index }
+
+mcm_demo_ex4:
+    path:     /name
+    defaults: { _controller: MCMDemoBundle:Nameform:newname }
 
 
 

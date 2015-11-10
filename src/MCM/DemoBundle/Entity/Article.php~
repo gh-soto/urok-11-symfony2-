@@ -142,10 +142,11 @@ class Article
      * @param \DateTime $createDate
      *
      * @return Article
+     * @ORM\PrePersist
      */
-    public function setCreateDate($createDate)
+    public function setCreateDate()
     {
-        $this->create_date = $createDate;
+        $this->create_date = new \DateTime('now');
 
         return $this;
     }
@@ -166,10 +167,11 @@ class Article
      * @param \DateTime $editDate
      *
      * @return Article
+     * @ORM\PreUpdate()
      */
-    public function setEditDate($editDate)
+    public function setEditDate()
     {
-        $this->edit_date = $editDate;
+        $this->edit_date = new \DateTime('now');
 
         return $this;
     }

@@ -7,21 +7,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use MCM\DemoBundle\Entity\Article;
-use MCM\DemoBundle\Form\ArticleType;
+use MCM\DemoBundle\Entity\Fsname;
+use MCM\DemoBundle\Form\FsnameType;
 
 /**
- * Article controller.
+ * Fsname controller.
  *
- * @Route("/article")
+ * @Route("/fsname")
  */
-class ArticleController extends Controller
+class FsnameController extends Controller
 {
 
     /**
-     * Lists all Article entities.
+     * Lists all Fsname entities.
      *
-     * @Route("/", name="art_list")
+     * @Route("/viewall", name="fsname")
      * @Method("GET")
      * @Template()
      */
@@ -29,22 +29,22 @@ class ArticleController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('MCMDemoBundle:Article')->findAll();
+        $entities = $em->getRepository('MCMDemoBundle:Fsname')->findAll();
 
         return array(
             'entities' => $entities,
         );
     }
     /**
-     * Creates a new Article entity.
+     * Creates a new Fsname entity.
      *
-     * @Route("/", name="_create")
+     * @Route("/", name="fsname_create")
      * @Method("POST")
-     * @Template("MCMDemoBundle:Article:new.html.twig")
+     * @Template("MCMDemoBundle:Fsname:new.html.twig")
      */
     public function createAction(Request $request)
     {
-        $entity = new Article();
+        $entity = new Fsname();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -53,7 +53,7 @@ class ArticleController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('fsname_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -63,16 +63,16 @@ class ArticleController extends Controller
     }
 
     /**
-     * Creates a form to create a Article entity.
+     * Creates a form to create a Fsname entity.
      *
-     * @param Article $entity The entity
+     * @param Fsname $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Article $entity)
+    private function createCreateForm(Fsname $entity)
     {
-        $form = $this->createForm(new ArticleType(), $entity, array(
-            'action' => $this->generateUrl('_create'),
+        $form = $this->createForm(new FsnameType(), $entity, array(
+            'action' => $this->generateUrl('fsname_create'),
             'method' => 'POST',
         ));
 
@@ -82,15 +82,15 @@ class ArticleController extends Controller
     }
 
     /**
-     * Displays a form to create a new Article entity.
+     * Displays a form to create a new Fsname entity.
      *
-     * @Route("/new", name="_new")
+     * @Route("/", name="fsname_new")
      * @Method("GET")
      * @Template()
      */
     public function newAction()
     {
-        $entity = new Article();
+        $entity = new Fsname();
         $form   = $this->createCreateForm($entity);
 
         return array(
@@ -100,9 +100,9 @@ class ArticleController extends Controller
     }
 
     /**
-     * Finds and displays a Article entity.
+     * Finds and displays a Fsname entity.
      *
-     * @Route("/{id}", name="_show")
+     * @Route("/{id}", name="fsname_show")
      * @Method("GET")
      * @Template()
      */
@@ -110,10 +110,10 @@ class ArticleController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('MCMDemoBundle:Article')->find($id);
+        $entity = $em->getRepository('MCMDemoBundle:Fsname')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Article entity.');
+            throw $this->createNotFoundException('Unable to find Fsname entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -125,9 +125,9 @@ class ArticleController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing Article entity.
+     * Displays a form to edit an existing Fsname entity.
      *
-     * @Route("/{id}/edit", name="_edit")
+     * @Route("/{id}/edit", name="fsname_edit")
      * @Method("GET")
      * @Template()
      */
@@ -135,10 +135,10 @@ class ArticleController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('MCMDemoBundle:Article')->find($id);
+        $entity = $em->getRepository('MCMDemoBundle:Fsname')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Article entity.');
+            throw $this->createNotFoundException('Unable to find Fsname entity.');
         }
 
         $editForm = $this->createEditForm($entity);
@@ -152,16 +152,16 @@ class ArticleController extends Controller
     }
 
     /**
-    * Creates a form to edit a Article entity.
+    * Creates a form to edit a Fsname entity.
     *
-    * @param Article $entity The entity
+    * @param Fsname $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Article $entity)
+    private function createEditForm(Fsname $entity)
     {
-        $form = $this->createForm(new ArticleType(), $entity, array(
-            'action' => $this->generateUrl('_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new FsnameType(), $entity, array(
+            'action' => $this->generateUrl('fsname_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -170,20 +170,20 @@ class ArticleController extends Controller
         return $form;
     }
     /**
-     * Edits an existing Article entity.
+     * Edits an existing Fsname entity.
      *
-     * @Route("/{id}", name="_update")
+     * @Route("/{id}", name="fsname_update")
      * @Method("PUT")
-     * @Template("MCMDemoBundle:Article:edit.html.twig")
+     * @Template("MCMDemoBundle:Fsname:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('MCMDemoBundle:Article')->find($id);
+        $entity = $em->getRepository('MCMDemoBundle:Fsname')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Article entity.');
+            throw $this->createNotFoundException('Unable to find Fsname entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -193,7 +193,7 @@ class ArticleController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('fsname_edit', array('id' => $id)));
         }
 
         return array(
@@ -203,9 +203,9 @@ class ArticleController extends Controller
         );
     }
     /**
-     * Deletes a Article entity.
+     * Deletes a Fsname entity.
      *
-     * @Route("/{id}", name="_delete")
+     * @Route("/{id}", name="fsname_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -215,21 +215,21 @@ class ArticleController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('MCMDemoBundle:Article')->find($id);
+            $entity = $em->getRepository('MCMDemoBundle:Fsname')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Article entity.');
+                throw $this->createNotFoundException('Unable to find Fsname entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl(''));
+        return $this->redirect($this->generateUrl('fsname'));
     }
 
     /**
-     * Creates a form to delete a Article entity by id.
+     * Creates a form to delete a Fsname entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -238,7 +238,7 @@ class ArticleController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('fsname_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

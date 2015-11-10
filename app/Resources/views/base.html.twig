@@ -3,11 +3,22 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link href="{{ asset('bundles/mcmdemo/css/bootstrap.min.css') }}" rel="stylesheet" />
+            <link href="{{ asset('bundles/mcmdemo/css/ownstyle.css') }}" rel="stylesheet" />
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+         <a href="/" class="btn btn-danger">Project Home Page</a>
+
+        {% block body %}
+
+        {% endblock %}
+
+        {% block javascripts %}
+            <script src="{{ asset('bundles/mcmdemo/js/ownscript.js') }}"></script>
+        {% endblock %}
+
     </body>
 </html>
